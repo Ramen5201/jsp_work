@@ -16,11 +16,20 @@ public class Member {
 	private Date modifyDate;
 	private String status;
 	
-	// 기본생성자, 매개변수가있는 생성자, setter//getter, toString
-	public Member() {
-		
+	//기본생성자, 매개변수가있는 생성자, setter/getter, toString
+	public Member() {}
+
+	public Member(String userId, String userName, String phone, String email, String address, String interest) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.phone = phone;
+		this.email = email;
+		this.address = address;
+		this.interest = interest;
 	}
 
+	//모든 매개변수가 있는 생성자
 	public Member(int userNo, String userId, String userPwd, String userName, String phone, String email,
 			String address, String interest, Date enrollDate, Date modifyDate, String status) {
 		super();
@@ -35,6 +44,19 @@ public class Member {
 		this.enrollDate = enrollDate;
 		this.modifyDate = modifyDate;
 		this.status = status;
+	}
+	
+	// 회원가입시 생성자
+	public Member(String userId, String userPwd, String userName, String phone, String email, String address,
+			String interest) {
+		super();
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.phone = phone;
+		this.email = email;
+		this.address = address;
+		this.interest = interest;
 	}
 
 	public int getUserNo() {
@@ -131,6 +153,4 @@ public class Member {
 				+ ", phone=" + phone + ", email=" + email + ", address=" + address + ", interest=" + interest
 				+ ", enrollDate=" + enrollDate + ", modifyDate=" + modifyDate + ", status=" + status + "]";
 	}
-	
-	
 }

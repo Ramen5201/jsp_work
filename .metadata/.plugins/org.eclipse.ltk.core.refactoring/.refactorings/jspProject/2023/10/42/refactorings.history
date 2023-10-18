@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;jspProject/src/main/java/db/sql/member-mapper2.xml&apos; to &apos;notice-mapper.xml&apos;" description="Rename resource &apos;member-mapper2.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/java/db/sql/member-mapper2.xml" name="notice-mapper.xml" stamp="1697588142764" updateReferences="true"/>
+</session>
