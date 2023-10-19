@@ -5,8 +5,8 @@
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="com.kh.notice.model.dao.NoticeDao"/>
-    <fullyQualifiedTypeName name="com.kh.common.JDBCTemplate"/>
     <fullyQualifiedTypeName name="com.kh.member.model.vo.Member"/>
     <fullyQualifiedTypeName name="com.kh.notice.model.vo.Notice"/>
     <fullyQualifiedTypeName name="com.sun.net.httpserver.Authenticator.Result"/>
+    <fullyQualifiedTypeName name="com.kh.common.JDBCTemplate"/>
 </qualifiedTypeNameHistroy>

@@ -1,6 +1,7 @@
 package com.kh.board.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.board.model.service.BoardSerivce;
+import com.kh.board.model.vo.Board;
+import com.kh.common.model.vo.PageInfo;
 
 /**
  * Servlet implementation class BoardListController
@@ -29,6 +32,7 @@ public class BoardListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		//-------------------페이징처리----------------------------
 		int listCount; // 현재 총 게시글 수
 		int currentPage; // 현재 페이지(즉, 사용자가 요청한 페이지)
@@ -77,6 +81,69 @@ public class BoardListController extends HttpServlet {
 		
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		
+		/**
+		 * *startPage : 페이징바 시작수
+		 * 
+		 *  pageLimit, currentPage에 영향을 받음
+		 *  
+		 *  ex) 페이징바의 목록이 10단위씩이라는 가정하에 
+		 *  	startPage : 1, 11, 21, 31 ...
+		 *  			 => n*10 + 1
+		 *  			 => n*pageLimit + 1
+		 *  
+		 *  1~10 => n=0
+		 * 11~20 => n=1
+		 * 21~30 => n=3
+		 * ...
+		 * 
+		 * currentPage    pageLimit    startPage
+		 * 		1			  10			1       =>     0*pageLimit + 1 (n=0)
+		 * 		5			  10			1       =>     0*pageLimit + 1 (n=0)
+		 * 		11			  10			2       =>     0*pageLimit + 1 (n=1)
+		 * 
+		 * 		1~10	=> n=0
+		 * 		11~20	=> n=1
+		 * 		21~30	=> n=2
+		 * 		...
+		 * 
+		 * currentPage - 1  /  pageLimit => n
+		 * 		0~9			/ 		10		0
+		 * 		10~19		/ 		10		1
+		 * 		20~29		/ 		10		2
+		 * 
+		 * startPage =			  n				  *   pageLimit + 1
+		 * 			 = (curentPage - 1)pageLimit  *   pageLimit + 1
+		 * 
+		 */
+		
+		startPage = ((currentPage - 1)) / pageLimit*pageLimit+1;
+		
+		/**
+		 * *endPage : 페이징바의 끝수
+		 * 
+		 *  startPage, pageLimit
+		 *  
+		 *  pageLimit : 10이라는 가정하에
+		 *  
+		 *  startPage : 1 => endPage: 10
+		 *  startPage : 11 => endPage : 20
+		 *  startPage : 21 => endPage : 30
+		 */
+		
+		endPage = startPage + pageLimit -1;
+		
+		// startPage가 11이면 endPage는 20이 됨(만약 maxPage가 13이라면?)
+		
+		endPage = endPage > maxPage ? maxPage : endPage;
+		
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+		
+		ArrayList<Board> list = new BoardSerivce().selectList(pi);
+		
+		request.setAttribute("pi", pi);
+		request.setAttribute("list", list);
+		
+		request.getRequestDispatcher("views/board/boardListView.jsp").forward(request, response);
 	}
 
 	/**
