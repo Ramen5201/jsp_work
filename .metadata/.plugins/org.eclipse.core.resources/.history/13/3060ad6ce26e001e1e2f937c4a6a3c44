@@ -20,7 +20,7 @@
         background: black;
         color: white;
         width: 1000px;
-        height: 550px;
+        height: 500px;
         margin:auto;
         margin-top: 50px;
     }
@@ -84,19 +84,11 @@
         <br><br>
 
         <div class="paging-area" align="center">
-        	<%if(currentPage != 1) { %>
-        	<button onclick="location.href='<%=contextPath%>/list.bo?cpage=<%=currentPage - 1%>'">&lt;</button>
-        	<% } %>
+        	<button>&lt;</button>
         	<%for(int p = startPage; p <= endPage; p++) { %>
-				<%if(p == currentPage) {%> 
-					<button disabled><%=p %></button>
-				<% } else { %>           
-            		<button onclick="location.href='<%=contextPath%>/list.bo?cpage=<%=p%>'"><%=p %></button>
-    			<% } %>
+            <button><%=p %></button>
     		<% } %>
-    		<%if(currentPage != maxPage){ %>
-            <button onclick="location.href='<%=contextPath%>/list.bo?cpage=<%=currentPage + 1%>'">&gt;</button>
-            <% } %>
+            <button>&gt;</button>
         </div>
 
     </div>
