@@ -1,0 +1,2 @@
+PreparedStatement pstmt = null;
+		String sql = prop.getProperty("increaseCount");

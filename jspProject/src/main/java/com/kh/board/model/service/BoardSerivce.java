@@ -60,7 +60,72 @@ public class BoardSerivce {
 			rollback(conn);
 		}
 		
+		close(conn);
+		
 		return result1 * result2;
 		
+	}
+	
+	public Board increaseCount(int boardNo) {
+		Connection conn = getConnection();
+		
+		BoardDao bDao = new BoardDao();
+		int result = bDao.increaseCount(conn, boardNo);
+		
+		Board b = null;
+		if (result > 0) {
+			commit(conn);
+			//정보조회
+			b = bDao.selectBoard(conn, boardNo);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return b;
+	}
+	
+	public Attachment selectAttachment(int boardNo) {
+		Connection conn = getConnection();
+		Attachment at = new BoardDao().selectAttachment(conn, boardNo);
+		
+		close (conn);
+		
+		return at;
+	}
+	
+	public Board selectBoard(int boardNo) {
+		Connection conn = getConnection();
+		Board b = new BoardDao().selectBoard(conn, boardNo);
+		
+		close(conn);
+		return b;
+	}
+	
+	public int updateBoard(Board b, Attachment at) {
+		Connection conn = getConnection();
+		
+		int result1 = new BoardDao().updateBoard(conn, b);
+		
+		int result2 = 1;
+		if (at != null) { // 새로운 첨부파일이 있을 경우
+			
+			if(at.getFileNo() != 0) { // 기존의 첨부파일 있었을 경우 => Attachment update
+				result2 = new BoardDao().updateAttachment(conn, at);
+			} else { // Attachment Insert
+				result2 = new BoardDao().insertNewAttachment(conn, at);
+			}
+		}
+		
+		
+		if (result1 > 0 & result2 > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result1 * result2;
 	}
 }

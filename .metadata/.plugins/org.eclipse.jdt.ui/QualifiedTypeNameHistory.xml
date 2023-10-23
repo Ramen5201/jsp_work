@@ -9,4 +9,5 @@
     <fullyQualifiedTypeName name="com.kh.notice.model.vo.Notice"/>
     <fullyQualifiedTypeName name="com.sun.net.httpserver.Authenticator.Result"/>
     <fullyQualifiedTypeName name="com.kh.common.JDBCTemplate"/>
+    <fullyQualifiedTypeName name="com.kh.board.model.vo.Board"/>
 </qualifiedTypeNameHistroy>
