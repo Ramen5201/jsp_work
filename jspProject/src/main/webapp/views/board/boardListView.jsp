@@ -44,7 +44,7 @@
 		<% if (loginUser != null) {%>
         <!-- 로그인한 회원보이게 -->
         <div align="right" style="width: 850px;">
-            <button>글작성</button>
+            <a href="<%=contextPath %>/enrollForm.bo" class="btn btn-sm btn-secondary">글작성</a>
             <br><br>
         </div>
         <% } %>
@@ -81,6 +81,19 @@
               <%} %>
             </tbody>
         </table>
+        <script>
+        	$(function(){
+        		$(".list-area>tbody>tr").click(function(){
+        			// $(this) => 클릭된 객체를 가르킨다.
+        			// 객체.children() => 객체의 자식노드List을 전부 가져온다.
+        			// 노드List.eq(index) => 노드 list에서 해당 index의 값을 가져온다.
+        			// text() => 그냥 메소드를 호출하면 텍스를 반호나하고 내부에 값을 전달하면 값이 들어간다.
+        			
+        			location.href = "<%=contextPath%>/detail.bo?bno=" + $(this).children().eq(0).text();
+        		})
+        	})
+        </script>
+        
         <br><br>
 
         <div class="paging-area" align="center">
