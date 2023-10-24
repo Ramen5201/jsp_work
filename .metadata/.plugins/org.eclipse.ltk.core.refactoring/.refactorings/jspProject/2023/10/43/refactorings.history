@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;jspProject/src/main/webapp/resources/thumnail_upfile&apos; to &apos;thumbnail_upfile&apos;" description="Rename resource &apos;thumnail_upfile&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/resources/thumnail_upfile" name="thumbnail_upfile" stamp="1698124858519" updateReferences="true"/>
+</session>

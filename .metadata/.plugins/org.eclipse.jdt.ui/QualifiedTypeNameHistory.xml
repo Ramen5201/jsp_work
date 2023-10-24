@@ -10,4 +10,5 @@
     <fullyQualifiedTypeName name="com.sun.net.httpserver.Authenticator.Result"/>
     <fullyQualifiedTypeName name="com.kh.common.JDBCTemplate"/>
     <fullyQualifiedTypeName name="com.kh.board.model.vo.Board"/>
+    <fullyQualifiedTypeName name="org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload"/>
 </qualifiedTypeNameHistroy>

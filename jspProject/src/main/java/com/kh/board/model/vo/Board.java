@@ -10,10 +10,11 @@ public class Board {
 	private int count;
 	private String createDate;
 	private String status;
+	private String titleImg;
 	
 	public Board() {}
-	
-	// 모든 필드를 초기화하는 생성자
+
+	//모든 필드를 초기화하는 생성자
 	public Board(int boardNo, int boardType, String category, String boardTitle, String boardContent,
 			String boardWriter, int count, String createDate, String status) {
 		super();
@@ -28,8 +29,7 @@ public class Board {
 		this.status = status;
 	}
 	
-	
-	// list에서 사용하는 생성자
+	//list에서 사용하는 생성자
 	public Board(int boardNo, String category, String boardTitle, String boardWriter, int count, String createDate) {
 		super();
 		this.boardNo = boardNo;
@@ -39,8 +39,8 @@ public class Board {
 		this.count = count;
 		this.createDate = createDate;
 	}
-	
-	// board디테일 페이지에서 사용하는 생성자
+
+	//board디테일 페이지에서 사용하는 생성자
 	public Board(int boardNo, String category, String boardTitle, String boardContent, String boardWriter,
 			String createDate) {
 		super();
@@ -50,6 +50,15 @@ public class Board {
 		this.boardContent = boardContent;
 		this.boardWriter = boardWriter;
 		this.createDate = createDate;
+	}
+
+	
+	public String getTitleImg() {
+		return titleImg;
+	}
+
+	public void setTitleImg(String titleImg) {
+		this.titleImg = titleImg;
 	}
 
 	public int getBoardNo() {
@@ -130,6 +139,5 @@ public class Board {
 				+ boardTitle + ", boardContent=" + boardContent + ", boardWriter=" + boardWriter + ", count=" + count
 				+ ", createDate=" + createDate + ", status=" + status + "]";
 	}
-	
-	
+
 }
